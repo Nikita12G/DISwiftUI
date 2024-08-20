@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct DISwiftUIApp: App {
+    let viewModel = DependencyProvider.shared.container.resolve(ContentViewModel.self)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if let viewModel = viewModel {
+                ContentView(viewModel: viewModel)
+            }
         }
     }
 }
